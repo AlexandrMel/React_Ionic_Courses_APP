@@ -6,10 +6,15 @@ import {
   IonTitle,
   IonButton,
   IonPage,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonCard,
+  IonCardContent,
 } from "@ionic/react";
 // import { useHistory } from 'react-router-dom'
 
-const COURSE_DATA = [
+export const COURSE_DATA = [
   {
     id: "c1",
     title: "Ionic + React - The Practical Guide",
@@ -36,11 +41,21 @@ const Courses: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <h2>This works - courses page!!!</h2>
-        <div>
-          <IonButton routerLink="/course-goals">To Course Goals</IonButton>
-          {/* <IonButton onClick={changePageHandler}>To Course Goals</IonButton> */}
-        </div>
+       <IonGrid>
+           {COURSE_DATA.map(course => (
+           <IonRow key={course.id}>
+           <IonCol className="ion-text-center" size-md="4" offset-md="4">
+               <IonCard>
+                   <IonCardContent>
+           <h2 >{course.title}</h2>
+           <IonButton routerLink={`/courses/${course.id}`}>View Course Goals</IonButton>
+                   </IonCardContent>
+               </IonCard>
+           </IonCol>
+       </IonRow>
+           ))}
+
+       </IonGrid>
       </IonContent>
     </IonPage>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonHeader, IonContent, IonToolbar, IonTitle, IonButton, IonPage } from '@ionic/react';
+import { IonHeader, IonContent, IonToolbar, IonTitle, IonButton, IonButtons, IonPage, IonMenuButton } from '@ionic/react';
 // import { useHistory } from 'react-router-dom'
 const AllGoals: React.FC = () => {
 // const history = useHistory();
@@ -10,6 +10,9 @@ const AllGoals: React.FC = () => {
         <IonPage>
         <IonHeader>
             <IonToolbar >
+                <IonButtons slot="start">
+                    <IonMenuButton />
+                </IonButtons>
                 <IonTitle>All Goals</IonTitle>
             </IonToolbar>
         </IonHeader>
