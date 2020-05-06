@@ -39,33 +39,14 @@ import "./theme/theme.css";
 
 import Filter from "./pages/Filter";
 import CourseTabs from "./pages/CourseTabs";
+import SideDrawer from "./components/SideDrawer";
+import CoursesContextProvider from "./data/CoursesContextProvider";
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-      <IonMenu contentId="main">
-        <IonHeader>
-          <IonToolbar>
-            <IonTitle>Course Goals</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent>
-          <IonList>
-            <IonMenuToggle>
-              <IonItem button routerLink="/courses/all-goals" routerDirection="none">
-                <IonIcon slot="start" icon={list} />
-                <IonLabel>AllGoals</IonLabel>
-              </IonItem>
-            </IonMenuToggle>
-            <IonMenuToggle>
-              <IonItem button routerLink="/filter" routerDirection="none">
-                <IonIcon slot="start" icon={options} />
-                <IonLabel>Filter</IonLabel>
-              </IonItem>
-            </IonMenuToggle>
-          </IonList>
-        </IonContent>
-      </IonMenu>
+      <SideDrawer />
+      <CoursesContextProvider>
       <IonRouterOutlet id="main">
         <Route path="/filter" exact>
           <Filter />
@@ -75,6 +56,7 @@ const App: React.FC = () => (
         </Route>
         <Redirect to="/courses" />
       </IonRouterOutlet>
+      </CoursesContextProvider>
     </IonReactRouter>
   </IonApp>
 );
